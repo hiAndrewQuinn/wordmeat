@@ -67,6 +67,13 @@ mvn exec:java -Dexec.mainClass="siilikuin.finstem.Main" \
     -Dexec.args="--word casa --target-language es"
 ```
 
+You can see the full command line options by running
+
+```bash
+mvn exec:java -Dexec.mainClass="siilikuin.finstem.Main" \
+    -Dexec.args="--help"
+```
+
 Eventually we plan to **ship this as a native executable** using
 something like
 [GraalVM](https://www.graalvm.org/). For now, this is the most
