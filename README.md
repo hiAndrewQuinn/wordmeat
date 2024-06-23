@@ -29,6 +29,9 @@ You will need:
 - [OpenJDK](https://openjdk.org/), version 22 or higher; and
 - [Apache Maven](https://maven.apache.org/), version 3.8.7 or higher.
 
+If you want to run the test suite, you will also need
+[JUnit](https://junit.org/), version 5.8.1 or higher.
+
 You may also find 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/?fromIDE=)
 Community Edition or higher useful as well, as this project can be 
@@ -72,6 +75,13 @@ You can see the full command line options by running
 ```bash
 mvn exec:java -Dexec.mainClass="siilikuin.finstem.Main" \
     -Dexec.args="--help"
+```
+
+If you wish to run the test suite as well, you can do so with
+a simple
+
+```bash
+mvn test
 ```
 
 Eventually we plan to **ship this as a native executable** using

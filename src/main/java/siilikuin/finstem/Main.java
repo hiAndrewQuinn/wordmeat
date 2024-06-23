@@ -9,10 +9,10 @@ import picocli.CommandLine.Parameters;
 public class Main implements Runnable {
 
     @Parameters(arity="1", paramLabel = "<word>", defaultValue = "sana", description = "The word to generate sentences for")
-    private String word;
+    public String word;
 
     @Option(names = "--target-language", description = "The target language code", required = true, defaultValue = "fi")
-    private String targetLanguage;
+    public String targetLanguage;
 
     public static void main(String[] args) {
         int exitCode = new CommandLine(new Main()).execute(args);
