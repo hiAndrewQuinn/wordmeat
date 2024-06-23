@@ -54,7 +54,7 @@ class OpenAIClientTest {
                 "fi: Olen menossa kirjastoon etsimään saksan sanakirjaa\nen: I'm going to the library to look for a German dictionary"
         };
 
-        Language finnish = new Language("fi", "suomi", "Finnish");
+        Language finnish = new Language("fi");
         String[] actualSentences = openAIClient.getExampleSentences(finnish, "sanakirja");
 
         assertArrayEquals(expectedSentences, actualSentences);
