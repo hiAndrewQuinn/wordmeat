@@ -53,7 +53,7 @@ public class Main implements Runnable {
 
         try {
             OpenAIClient openAIClient = new OpenAIClient(OPENAI_API_KEY);
-            String[] sentences = openAIClient.getExampleSentences(language.englishName(), word);
+            String[] sentences = openAIClient.getExampleSentences(language, word);
             for (String sentence : sentences) {
                 System.out.println(sentence);
             }

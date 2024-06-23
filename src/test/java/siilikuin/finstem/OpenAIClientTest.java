@@ -36,34 +36,26 @@ class OpenAIClientTest {
     void testGetExampleSentences() throws IOException {
         String jsonResponse = "{\n" +
                 "  \"choices\": [\n" +
-                "    {\"text\": \"Example sentence 1.\"},\n" +
-                "    {\"text\": \"Example sentence 2.\"},\n" +
-                "    {\"text\": \"Example sentence 3.\"},\n" +
-                "    {\"text\": \"Example sentence 4.\"},\n" +
-                "    {\"text\": \"Example sentence 5.\"},\n" +
-                "    {\"text\": \"Example sentence 6.\"},\n" +
-                "    {\"text\": \"Example sentence 7.\"},\n" +
-                "    {\"text\": \"Example sentence 8.\"},\n" +
-                "    {\"text\": \"Example sentence 9.\"},\n" +
-                "    {\"text\": \"Example sentence 10.\"}\n" +
+                "    {\"message\": {\"content\": \"fi: Minulla on iso sanakirja kotona\\nen: I have a large dictionary at home\\n\\nfi: Tarvitsen englanti-suomi sanakirjaa\\nen: I need an English-Finnish dictionary\\n\\nfi: Ostin uuden elektronisen sanakirjan\\nen: I bought a new electronic dictionary\\n\\nfi: Voisitko lainata minulle ranska-suomi sanakirjaa\\nen: Could you lend me a French-Finnish dictionary\\n\\nfi: Sanakirja auttaa minua löytämään oikeat sanat\\nen: The dictionary helps me find the right words\\n\\nfi: Opi uusia sanoja sanakirjan avulla\\nen: Learn new words with the help of a dictionary\\n\\nfi: En löydä sanaa sanakirjasta\\nen: I can't find the word in the dictionary\\n\\nfi: Sanakirja on hyödyllinen työkalu kielten opiskelussa\\nen: The dictionary is a useful tool for studying languages\\n\\nfi: Käännä tämä lause sanakirjasta\\nen: Translate this sentence from the dictionary\\n\\nfi: Olen menossa kirjastoon etsimään saksan sanakirjaa\\nen: I'm going to the library to look for a German dictionary\"}}\n" +
                 "  ]\n" +
                 "}";
         mockWebServer.enqueue(new MockResponse().setBody(jsonResponse).addHeader("Content-Type", "application/json"));
 
         String[] expectedSentences = {
-                "Example sentence 1.",
-                "Example sentence 2.",
-                "Example sentence 3.",
-                "Example sentence 4.",
-                "Example sentence 5.",
-                "Example sentence 6.",
-                "Example sentence 7.",
-                "Example sentence 8.",
-                "Example sentence 9.",
-                "Example sentence 10."
+                "fi: Minulla on iso sanakirja kotona\nen: I have a large dictionary at home",
+                "fi: Tarvitsen englanti-suomi sanakirjaa\nen: I need an English-Finnish dictionary",
+                "fi: Ostin uuden elektronisen sanakirjan\nen: I bought a new electronic dictionary",
+                "fi: Voisitko lainata minulle ranska-suomi sanakirjaa\nen: Could you lend me a French-Finnish dictionary",
+                "fi: Sanakirja auttaa minua löytämään oikeat sanat\nen: The dictionary helps me find the right words",
+                "fi: Opi uusia sanoja sanakirjan avulla\nen: Learn new words with the help of a dictionary",
+                "fi: En löydä sanaa sanakirjasta\nen: I can't find the word in the dictionary",
+                "fi: Sanakirja on hyödyllinen työkalu kielten opiskelussa\nen: The dictionary is a useful tool for studying languages",
+                "fi: Käännä tämä lause sanakirjasta\nen: Translate this sentence from the dictionary",
+                "fi: Olen menossa kirjastoon etsimään saksan sanakirjaa\nen: I'm going to the library to look for a German dictionary"
         };
 
-        String[] actualSentences = openAIClient.getExampleSentences("English", "testword");
+        Language finnish = new Language("fi", "suomi", "Finnish");
+        String[] actualSentences = openAIClient.getExampleSentences(finnish, "sanakirja");
 
         assertArrayEquals(expectedSentences, actualSentences);
     }
@@ -72,6 +64,7 @@ class OpenAIClientTest {
     void testGetExampleSentencesWithInvalidResponse() {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
 
-        assertThrows(IOException.class, () -> openAIClient.getExampleSentences("English", "testword"));
+        Language english = new Language("en", "English", "English");
+        assertThrows(IOException.class, () -> openAIClient.getExampleSentences(english, "testword"));
     }
 }
