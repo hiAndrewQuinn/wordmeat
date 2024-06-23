@@ -39,10 +39,6 @@ public class OpenAIClient {
                 MediaType.get("application/json")
         );
 
-        System.out.println(body);
-
-        System.out.println("Preparing request");
-        System.out.println(apiKey);
         Request request = new Request.Builder()
                 .url(apiUrl)
                 .post(body)
