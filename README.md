@@ -64,7 +64,7 @@ For example:
 
 ```bash
 mvn exec:java -Dexec.mainClass="siilikuin.finstem.Main" \
-    -Dexec.args="--word casa --target-language es"
+    -Dexec.args="--target-language es casa"
 ```
 
 You can see the full command line options by running

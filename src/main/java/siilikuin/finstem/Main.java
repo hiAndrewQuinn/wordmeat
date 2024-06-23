@@ -2,12 +2,13 @@ package siilikuin.finstem;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.Parameters;
 
 @SuppressWarnings({"unused"})
 @CommandLine.Command(name = "wordmeat", version = "wordmeat 0.1", mixinStandardHelpOptions = true)
 public class Main implements Runnable {
 
-    @Option(names = "--word", description = "The word to generate sentences for", required = true, defaultValue = "sana")
+    @Parameters(arity="1", paramLabel = "<word>", defaultValue = "sana", description = "The word to generate sentences for")
     private String word;
 
     @Option(names = "--target-language", description = "The target language code", required = true, defaultValue = "fi")
