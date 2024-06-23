@@ -36,3 +36,10 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+########################################
+# SQLite databases, .env files
+*.db
+*.sqlite3
+*.env
+
