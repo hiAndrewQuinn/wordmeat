@@ -4,6 +4,7 @@ import picocli.CommandLine;
 import picocli.CommandLine.Option;
 
 @SuppressWarnings({"unused"})
+@CommandLine.Command(name = "wordmeat", version = "wordmeat 0.1", mixinStandardHelpOptions = true)
 public class Main implements Runnable {
 
     @Option(names = "--word", description = "The word to generate sentences for", required = true, defaultValue = "sana")
