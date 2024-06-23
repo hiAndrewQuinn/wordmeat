@@ -50,8 +50,30 @@ Next, use Maven to build and run the program.
 ```bash
 # while cd'ed into wordmeat/
 mvn clean install
+```
+
+Then you can run the program with
+
+```bash
 mvn exec:java -Dexec.mainClass="siilikuin.finstem.Main"
 ```
+
+This will print the default, and ask you (if you haven't already) to
+set an `OPENAI_API_KEY` variable. You can get one of these by going to 
+[https://platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+
+```
+Target Language: Finnish (fi)
+Word: sana
+The environment variable OPENAI_API_KEY is not set.
+Please set the OPENAI_API_KEY environment variable to your OpenAI API key.
+
+Examples:
+
+  export OPENAI_API_KEY=your_openai_api_key_here              # Unix-based
+  setx OPENAI_API_KEY "your_openai_api_key_here"              # Windows
+```
+
 
 `wordmeat` uses
 [picocli](https://picocli.info/)
